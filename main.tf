@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "${var.aws_region}"
-}
-
 module "dns" {
   source = "github.com/mergermarket/tf_route53_dns"
 
@@ -48,7 +44,7 @@ module "taskdef" {
 }
 
 module "service_container_definition" {
-  source = "github.com/mergermarket/tf_ecs_container_definition.git?ref=remove_default_values"
+  source = "github.com/mergermarket/tf_ecs_container_definition.git"
 
   name           = "${lookup(var.release, "component")}"
   image          = "${lookup(var.release, "image_id")}"
