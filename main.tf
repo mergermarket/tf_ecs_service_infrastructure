@@ -28,7 +28,7 @@ module "ecs_update_monitor" {
 module "service" {
   source = "github.com/mergermarket/tf_load_balanced_ecs_service"
   
-  name            = "${var.env}-${lookup(var.release, "component")}-migrate"
+  name            = "migrate-${var.env}-${lookup(var.release, "component")}"
   cluster         = "${var.ecs_cluster}"
   task_definition = "${module.taskdef.arn}"
   vpc_id          = "${var.platform_config["vpc"]}"
