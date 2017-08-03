@@ -58,7 +58,10 @@ module "service_container_definition" {
       "LOGSPOUT_CLOUDWATCHLOGS_LOG_GROUP_STDERR", "${var.env}-${lookup(var.release, "component")}-stderr",
       "STATSD_HOST", "172.17.42.1",
       "STATSD_PORT", "8125",
-      "STATSD_ENABLED", "true"
+      "STATSD_ENABLED", "true",
+      "ENV_NAME", "${var.env}",
+      "COMPONENT_NAME",  "${lookup(var.release, "component")}",
+      "VERSION",  "${lookup(var.release, "version")}"
     ),
     var.common_application_environment,
     var.application_environment,
