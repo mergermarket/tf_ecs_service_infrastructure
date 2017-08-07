@@ -34,6 +34,7 @@ module "service" {
   vpc_id          = "${var.platform_config["vpc"]}"
   container_name  = "${lookup(var.release, "component")}"
   container_port  = "${var.port}"
+  desired_count   = "${var.desired_count}"
 }
 
 module "taskdef" {
