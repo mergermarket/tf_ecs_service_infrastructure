@@ -71,3 +71,9 @@ variable "alb_listener_rule_priority" {
   type        = "string"
   description = "The priority for the rule - must be different per rule."
 }
+
+variable "desired_count" {
+  description = "The number of instances of the task definition to place and keep running."
+  type        = "string"
+  default     = "3"
+}
