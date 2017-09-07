@@ -68,6 +68,13 @@ module "service_container_definition" {
     var.application_environment,
     var.secrets
   )}"
+
+  labels {
+    component = "${lookup(var.release, "component")}"
+    env       = "${var.env}"
+    team      = "${lookup(var.release, "team")}"
+    version   = "${lookup(var.release, "version")}"
+  }
 }
 
 resource "aws_cloudwatch_log_group" "stdout" {
