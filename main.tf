@@ -2,7 +2,7 @@ module "dns" {
   source = "github.com/mergermarket/tf_route53_dns"
 
   domain = "${var.dns_domain}"
-  name   = "${replace("${lookup(var.release, "component")}", "/-service$/", "")}"
+  name   = "${replace("${lookup(var.release, "component")}", "/-service$|-admin$|-subscriber$/", "")}"
   env    = "${var.env}"
   target = "${var.alb_dns_name}"
 }
