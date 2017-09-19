@@ -2,7 +2,7 @@ module "dns" {
   source = "github.com/mergermarket/tf_route53_dns"
 
   domain = "${var.dns_domain}"
-  name   = "${replace("${lookup(var.release, "component")}", "/-service$/", "")}"
+  name   = "${var.dns_name != "" ? var.dns_name : replace("${lookup(var.release, "component")}", "/-service$/", "")}"
   env    = "${var.env}"
   target = "${var.alb_dns_name}"
 }
@@ -27,7 +27,7 @@ module "ecs_update_monitor" {
 
 module "service" {
   source = "github.com/mergermarket/tf_load_balanced_ecs_service"
-  
+
   name            = "${var.env}-${lookup(var.release, "component")}"
   cluster         = "${var.ecs_cluster}"
   task_definition = "${module.taskdef.arn}"

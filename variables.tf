@@ -36,6 +36,12 @@ variable "dns_domain" {
   description = "The DNS domain"
 }
 
+variable "dns_name" {
+  type        = "string"
+  description = "The first part of the DNS name without the environment"
+  default     = ""
+}
+
 variable "ecs_cluster" {
   type        = "string"
   description = "The ECS cluster"
