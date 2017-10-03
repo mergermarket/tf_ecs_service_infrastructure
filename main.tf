@@ -38,10 +38,11 @@ module "service" {
 }
 
 module "taskdef" {
-  source = "github.com/mergermarket/tf_ecs_task_definition"
+  source = "github.com/mergermarket/tf_ecs_task_definition_with_task_role"
 
   family                = "${var.env}-${lookup(var.release, "component")}"
   container_definitions = ["${module.service_container_definition.rendered}"]
+  policy                = "${var.task_role_policy}"
 }
 
 module "service_container_definition" {

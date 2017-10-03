@@ -83,3 +83,14 @@ variable "desired_count" {
   type        = "string"
   default     = "3"
 }
+
+variable "task_role_policy" {
+  description = "IAM policy document to apply to the tasks via a task role"
+  type        = "string"
+  default     = <<END
+{
+  "Version": "2012-10-17",
+  "Statement": []
+}
+END
+}
