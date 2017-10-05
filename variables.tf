@@ -83,3 +83,9 @@ variable "desired_count" {
   type        = "string"
   default     = "3"
 }
+
+variable "logentries_token" {
+  description = "The Logentries token used to be able to get logs sent to a specific log set."
+  type        = "string"
+  default     = ""
+}

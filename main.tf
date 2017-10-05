@@ -70,10 +70,11 @@ module "service_container_definition" {
   )}"
 
   labels {
-    component = "${lookup(var.release, "component")}"
-    env       = "${var.env}"
-    team      = "${lookup(var.release, "team")}"
-    version   = "${lookup(var.release, "version")}"
+    component        = "${lookup(var.release, "component")}"
+    env              = "${var.env}"
+    team             = "${lookup(var.release, "team")}"
+    version          = "${lookup(var.release, "version")}"
+    logentries_token = "${var.logentries_token}"
   }
 }
 
