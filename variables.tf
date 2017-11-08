@@ -89,8 +89,3 @@ variable "logentries_token" {
   type        = "string"
   default     = ""
 }
-
-variable "prevent_dns_destroy" {
-  type    = "string"
-  default = "true"
-}

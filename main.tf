@@ -1,11 +1,10 @@
 module "dns" {
   source = "github.com/mergermarket/tf_route53_dns"
 
-  domain          = "${var.dns_domain}"
-  name            = "${var.dns_name != "" ? var.dns_name : replace("${lookup(var.release, "component")}", "/-service$/", "")}"
-  env             = "${var.env}"
-  target          = "${var.alb_dns_name}"
-  prevent_destroy = "${var.prevent_dns_destroy}"
+  domain = "${var.dns_domain}"
+  name   = "${var.dns_name != "" ? var.dns_name : replace("${lookup(var.release, "component")}", "/-service$/", "")}"
+  env    = "${var.env}"
+  target = "${var.alb_dns_name}"
 }
 
 module "listener_rule_home" {
@@ -54,7 +53,7 @@ module "service_container_definition" {
   memory         = "${var.memory}"
   container_port = "${var.port}"
 
-  container_env = "${merge(
+  container_env  = "${merge(
     map(
       "LOGSPOUT_CLOUDWATCHLOGS_LOG_GROUP_STDOUT", "${var.env}-${lookup(var.release, "component")}-stdout",
       "LOGSPOUT_CLOUDWATCHLOGS_LOG_GROUP_STDERR", "${var.env}-${lookup(var.release, "component")}-stderr",
