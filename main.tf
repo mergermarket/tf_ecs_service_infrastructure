@@ -49,6 +49,7 @@ module "taskdef" {
 
   family                = "${var.env}-${lookup(var.release, "component")}"
   container_definitions = ["${module.service_container_definition.rendered}"]
+  task_role_arn         = "${var.task_role_arn}"
 }
 
 module "service_container_definition" {

@@ -131,3 +131,9 @@ variable "health_check_matcher" {
   type        = "string"
   default     = "200-299"
 }
+
+variable "task_role_arn" {
+  description = "The Amazon Resource Name for an IAM role for the task"
+  type        = "string"
+  default     = ""
+}
