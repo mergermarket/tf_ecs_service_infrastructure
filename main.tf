@@ -52,7 +52,7 @@ module "taskdef" {
 }
 
 module "service_container_definition" {
-  source = "github.com/mergermarket/tf_ecs_container_definition.git"
+  source = "github.com/mergermarket/tf_ecs_container_definition.git?ref=no-secrets"
 
   name           = "${lookup(var.release, "component")}"
   image          = "${lookup(var.release, "image_id")}"
